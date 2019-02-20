@@ -34,6 +34,7 @@ function refreshTimeRemaining() {
             $("#button-reset").attr('disabled', true);
             if (leftTime < 1) {
                 fieldTyping.attr("disabled", true);
+                fieldTyping.addClass("disabled-field");
                 $("#button-reset").attr('disabled', false);
                 clearInterval(id);
             }
@@ -47,5 +48,6 @@ function restartGame() {
     $(".timer-typing").text(TIMER_TYPING);
     fieldTyping.val("");
     fieldTyping.attr("disabled", false);
+    fieldTyping.removeClass("disabled-field");
     refreshTimeRemaining();
 }

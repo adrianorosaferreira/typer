@@ -1,0 +1,20 @@
+:root {
+    --font-size: 20px;
+}
+
+#field-typing-id {
+    font-size: var(--font-size);
+    height: 130px;
+}
+
+.phrase {
+    font-size: var(--font-size);
+}
+
+.disabled-field {
+    background-color: lightgray;
+}
+
+.icon-alignment {
+    vertical-align: middle;
+}

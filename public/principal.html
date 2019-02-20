@@ -4,27 +4,43 @@
 <head>
     <meta charset="UTF-8">
     <title>Alura Typer</title>
+    <link rel="stylesheet" href="css/libs/materialize.min.css">
+    <link rel="stylesheet" href="css/libs/google-fonts.css">
+    <link rel="stylesheet" href="css/estilos.css">
 </head>
 
 <body>
-    <h1>Typer Hero</h1>
+    <div class="container">
+        <h1 class="center">Typer Hero</h1>
 
-    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sed maxime corrupti, at officia laudantium, non cum et excepturi distinctio totam magni ut consectetur voluptatem perspiciatis, optio eos? Dignissimos, eum voluptate.</p>
+        <p class="phrase center">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sed maxime corrupti, at officia laudantium, non cum et excepturi distinctio totam magni ut consectetur voluptatem perspiciatis, optio eos? Dignissimos, eum voluptate.</p>
 
-    <ul>
-        <li><span class="number-words">5</span> palavras</li>
-        <li><span class="timer-typing">5</span> segundos</li>
-    </ul>
+        <ul class="center">
+            <li>
+                <i class="small material-icons icon-alignment ">description</i>
+                <span class="number-words">5</span> palavras
+            </li>
+            <li>
+                <i class="small material-icons icon-alignment">query_builder</i>
+                <span class="timer-typing">5</span> segundos
+            </li>
+        </ul>
 
-    <textarea name="field-typing" id="field-typing-id" cols="30" rows="10"></textarea>
-    <button id="button-reset" disabled>Reiniciar</button>
+        <textarea name="field-typing" id="field-typing-id" cols="30" rows="10"></textarea>
+        <div class="buttons">
+            <a id="button-reset" class="btn-floating btn-large waves-effect waves-light red" disabled>
+                <i class="material-icons">restore</i>
+            </a>
+        </div>
 
-    <ul>
-        <li><span class="counter-characters">0</span> caracteres</li>
-        <li><span class="counter-words">0</span> palavras</li>
-    </ul>
-    <script src="js/jquery.js"></script>
-    <script src="js/main.js"></script>
+        <ul class="center">
+            <li><span class="counter-characters">0</span> caracteres</li>
+            <li><span class="counter-words">0</span> palavras</li>
+        </ul>
+        <script src="js/jquery.js"></script>
+        <script src="js/main.js"></script>
+
+    </div>
 </body>
 
 </html>
