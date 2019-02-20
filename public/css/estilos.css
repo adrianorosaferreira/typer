@@ -5,6 +5,7 @@
 #field-typing-id {
     font-size: var(--font-size);
     height: 130px;
+    text-align: inherit;
 }
 
 .phrase {
@@ -17,4 +18,16 @@
 
 .icon-alignment {
     vertical-align: middle;
+}
+
+.initial-state {
+    border: 4px solid black;
+}
+
+.different-text {
+    border: 4px solid red;
+}
+
+.same-text {
+    border: 4px solid green;
 }

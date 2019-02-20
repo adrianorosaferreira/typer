@@ -1,4 +1,4 @@
-const TIMER_TYPING = 5;
+const TIMER_TYPING = 10;
 
 let fieldTyping = $('#field-typing-id');
 
@@ -6,6 +6,7 @@ $(() => {
     refreshSentenceSize();
     counterUpdates();
     refreshTimeRemaining();
+    validateTyping();
     $("#button-reset").click(restartGame);
     $("#button-reset").attr('disabled', true);
 });
@@ -23,6 +24,21 @@ function counterUpdates() {
         $('.counter-words').text(content.split(/\S+/).length - 1);
         $('.counter-characters').text(content.replace(/\s+/g, '').length);
     });
+}
+
+function validateTyping() {
+    fieldTyping.on('input', () => {
+        let typed = fieldTyping.val();
+        let comparableContent = $('.phrase').text().substr(0, typed.length);
+
+        if (typed == comparableContent) {
+            fieldTyping.addClass('same-text');
+            fieldTyping.removeClass('different-text');
+        } else {
+            fieldTyping.addClass('different-text');
+            fieldTyping.removeClass('same-text');
+        }
+    })
 }
 
 function refreshTimeRemaining() {
@@ -49,5 +65,8 @@ function restartGame() {
     fieldTyping.val("");
     fieldTyping.attr("disabled", false);
     fieldTyping.removeClass("disabled-field");
+    fieldTyping.removeClass('same-text');
+    fieldTyping.removeClass('different-text');
+    fieldTyping.addClass('initial-state');
     refreshTimeRemaining();
 }
