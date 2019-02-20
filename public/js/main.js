@@ -7,6 +7,7 @@ $(() => {
     counterUpdates();
     refreshTimeRemaining();
     $("#button-reset").click(restartGame);
+    $("#button-reset").attr('disabled', true);
 });
 
 function refreshSentenceSize() {
@@ -30,8 +31,10 @@ function refreshTimeRemaining() {
         let id = setInterval(() => {
             leftTime--;
             $(".timer-typing").text(leftTime);
+            $("#button-reset").attr('disabled', true);
             if (leftTime < 1) {
                 fieldTyping.attr("disabled", true);
+                $("#button-reset").attr('disabled', false);
                 clearInterval(id);
             }
         }, 1000);
