@@ -1,6 +1,7 @@
 const TIMER_TYPING = 10;
 
 let fieldTyping = $('#field-typing-id');
+let user = 'Spider-man';
 
 $(() => {
     refreshSentenceSize();
@@ -29,15 +30,14 @@ function counterUpdates() {
 function validateTyping() {
     fieldTyping.on('input', () => {
         let typed = fieldTyping.val();
-        let comparableContent = $('.phrase').text().substr(0, typed.length);
 
-        if (typed == comparableContent) {
-            fieldTyping.addClass('same-text');
-            fieldTyping.removeClass('different-text');
-        } else {
-            fieldTyping.addClass('different-text');
-            fieldTyping.removeClass('same-text');
-        }
+        // let comparableContent = $('.phrase').text().substr(0, typed.length);
+        // let isMatch = (typed == comparableContent);
+        // Isto é equivalente a isso:
+
+        let isMatch = $('.phrase').text().startsWith(typed);
+        fieldTyping.toggleClass('different-text', !isMatch);
+        fieldTyping.toggleClass('same-text', isMatch);
     })
 }
 
@@ -49,13 +49,18 @@ function refreshTimeRemaining() {
             $(".timer-typing").text(leftTime);
             $("#button-reset").attr('disabled', true);
             if (leftTime < 1) {
-                fieldTyping.attr("disabled", true);
-                fieldTyping.addClass("disabled-field");
-                $("#button-reset").attr('disabled', false);
+                endGame();
+                insertScore();
                 clearInterval(id);
             }
         }, 1000);
     });
+}
+
+function endGame() {
+    fieldTyping.attr("disabled", true);
+    fieldTyping.addClass("disabled-field");
+    $("#button-reset").attr('disabled', false);
 }
 
 function restartGame() {
