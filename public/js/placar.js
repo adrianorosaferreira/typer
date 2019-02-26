@@ -1,3 +1,15 @@
+$('#button-assignment').click(toggleScoreboard);
+
+function insertScore() {
+    let tableBody = $('.scoreboard').find('tbody');
+    let numberWords = $('.counter-words').text();
+
+    let line = createLine(user, numberWords);
+    line.find('.remove-button').click(removeLine);
+
+    tableBody.prepend(line);
+}
+
 function createLine(user, numberWords) {
     let tr = $('<tr>');
     let tdUser = $('<td>').text(user);
@@ -18,4 +30,9 @@ function createLine(user, numberWords) {
 function removeLine(e) {
     e.preventDefault();
     $(this).parent().parent().remove();
+}
+
+function toggleScoreboard() {
+    $('.scoreboard').fadeToggle(600);
+
 }

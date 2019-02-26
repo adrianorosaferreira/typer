@@ -31,3 +31,7 @@
 .same-text {
     border: 4px solid green;
 }
+
+.scoreboard {
+    display: none;
+}
