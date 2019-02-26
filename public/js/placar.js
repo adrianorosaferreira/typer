@@ -8,6 +8,15 @@ function insertScore() {
     line.find('.remove-button').click(removeLine);
 
     tableBody.prepend(line);
+    $('.scoreboard').slideDown(600);
+    scrollScoreboard();
+}
+
+function scrollScoreboard() {
+    const posicaoPlacar = $('.scoreboard').offset().top;
+    $("body").animate({
+        scrollTop: posicaoPlacar + "px"
+    }, 1000);
 }
 
 function createLine(user, numberWords) {
@@ -29,10 +38,12 @@ function createLine(user, numberWords) {
 
 function removeLine(e) {
     e.preventDefault();
-    $(this).parent().parent().remove();
+    let line = $(this).parent().parent();
+    line.fadeOut(1000);
+    setTimeout(() => line.remove(), 1000);
 }
 
 function toggleScoreboard() {
-    $('.scoreboard').fadeToggle(600);
+    $('.scoreboard').stop().slideToggle(600);
 
 }

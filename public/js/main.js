@@ -1,4 +1,4 @@
-const TIMER_TYPING = 10;
+let TIMER_TYPING = 3;
 
 let fieldTyping = $('#field-typing-id');
 let user = 'Spider-man';
@@ -10,7 +10,12 @@ $(() => {
     validateTyping();
     $("#button-reset").click(restartGame);
     $("#button-reset").attr('disabled', true);
-});
+})
+
+function updateTime(time) {
+    TIMER_TYPING = time;
+    $('.timer-typing').text(time);
+}
 
 function refreshSentenceSize() {
     let paragraph = $('p').text();
@@ -42,8 +47,8 @@ function validateTyping() {
 }
 
 function refreshTimeRemaining() {
-    let leftTime = TIMER_TYPING;
     fieldTyping.one('focus', () => {
+        let leftTime = TIMER_TYPING;
         let id = setInterval(() => {
             leftTime--;
             $(".timer-typing").text(leftTime);
