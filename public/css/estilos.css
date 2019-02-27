@@ -39,3 +39,16 @@
 body {
     overflow: scroll;
 }
+
+#error {
+    display: none;
+    color: red;
+}
+
+#spinner {
+    display: none;
+}
+
+#phrase-id {
+    width: 30px;
+}

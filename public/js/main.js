@@ -18,7 +18,7 @@ function updateTime(time) {
 }
 
 function refreshSentenceSize() {
-    let paragraph = $('p').text();
+    let paragraph = $('.phrase').text();
     let numberWords = paragraph.split(' ').length;
     $('.number-words').text(numberWords);
 }
