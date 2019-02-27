@@ -52,3 +52,7 @@ body {
 #phrase-id {
     width: 30px;
 }
+
+#button-sync {
+    float: right;
+}

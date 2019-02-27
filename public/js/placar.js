@@ -1,4 +1,5 @@
 $('#button-assignment').click(toggleScoreboard);
+$('#button-sync').click(syncScoreboard);
 
 function insertScore() {
     let tableBody = $('.scoreboard').find('tbody');
@@ -10,6 +11,27 @@ function insertScore() {
     tableBody.prepend(line);
     $('.scoreboard').slideDown(600);
     scrollScoreboard();
+}
+
+function syncScoreboard() {
+    let scoreboard = [];
+    let scores = $('tbody>tr');
+    scores.each(function() {
+        console.log('aqui');
+        const user = $(this).find('td:nth-child(1)').text();
+        const words = $(this).find('td:nth-child(2)').text();
+
+        const score = {
+            usuario: user,
+            pontos: words
+        }
+        scoreboard.push(score);
+    });
+
+    const data = { placar: scoreboard };
+    $.post("http://localhost:3000/placar", data, () => {
+        console.log("Scoreboard successfully synced.");
+    });
 }
 
 function scrollScoreboard() {
