@@ -10,6 +10,7 @@ $(() => {
     validateTyping();
     $("#button-reset").click(restartGame);
     $("#button-reset").attr('disabled', true);
+    updateScoreboard();
 })
 
 function updateTime(time) {

@@ -5,10 +5,10 @@ function insertScore() {
     let tableBody = $('.scoreboard').find('tbody');
     let numberWords = $('.counter-words').text();
 
-    let line = createLine(user, numberWords);
-    line.find('.remove-button').click(removeLine);
+    let row = createRow(user, numberWords);
+    row.find('.remove-button').click(removeRow);
 
-    tableBody.prepend(line);
+    tableBody.prepend(row);
     $('.scoreboard').slideDown(600);
     scrollScoreboard();
 }
@@ -41,7 +41,7 @@ function scrollScoreboard() {
     }, 1000);
 }
 
-function createLine(user, numberWords) {
+function createRow(user, numberWords) {
     let tr = $('<tr>');
     let tdUser = $('<td>').text(user);
     let tdWords = $('<td>').text(numberWords);
@@ -58,14 +58,24 @@ function createLine(user, numberWords) {
     return tr;
 }
 
-function removeLine(e) {
+function removeRow(e) {
     e.preventDefault();
-    let line = $(this).parent().parent();
-    line.fadeOut(1000);
-    setTimeout(() => line.remove(), 1000);
+    let row = $(this).parent().parent();
+    row.fadeOut(1000);
+    setTimeout(() => row.remove(), 1000);
 }
 
 function toggleScoreboard() {
     $('.scoreboard').stop().slideToggle(600);
 
+}
+
+function updateScoreboard() {
+    $.get('http://localhost:3000/placar', function(data) {
+        $(data).each(function() {
+            let row = createRow(this.usuario, this.pontos);
+            row.find('.remove-button').click(removeRow);
+            $('tbody').append(row);
+        });
+    });
 }
