@@ -15,6 +15,11 @@ $(() => {
         create: true,
         sortField: 'text'
     });
+
+    $('.tooltip').tooltipster({
+        trigger: 'custom',
+        theme: 'tooltipster-noir'
+    });
 })
 
 function updateTime(time) {

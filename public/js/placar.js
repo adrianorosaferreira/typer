@@ -30,8 +30,17 @@ function syncScoreboard() {
 
     const data = { placar: scoreboard };
     $.post("http://localhost:3000/placar", data, () => {
-        console.log("Scoreboard successfully synced.");
-    });
+            console.log("Scoreboard successfully synced.");
+            $('.tooltip').tooltipster('open');
+        })
+        .fail(() => {
+            $('.tooltip').tooltipster('open').tooltipster('content', 'Falha ao tentar sincronizar');
+        })
+        .always(() => {
+            setTimeout(() => {
+                $('.tooltip').tooltipster('close');
+            }, 1500);
+        });
 }
 
 function scrollScoreboard() {
