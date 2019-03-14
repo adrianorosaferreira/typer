@@ -4,6 +4,7 @@ $('#button-sync').click(syncScoreboard);
 function insertScore() {
     let tableBody = $('.scoreboard').find('tbody');
     let numberWords = $('.counter-words').text();
+    let user = $('#user').val();
 
     let row = createRow(user, numberWords);
     row.find('.remove-button').click(removeRow);
@@ -17,7 +18,6 @@ function syncScoreboard() {
     let scoreboard = [];
     let scores = $('tbody>tr');
     scores.each(function() {
-        console.log('aqui');
         const user = $(this).find('td:nth-child(1)').text();
         const words = $(this).find('td:nth-child(2)').text();
 

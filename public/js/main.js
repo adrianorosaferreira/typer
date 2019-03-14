@@ -1,7 +1,7 @@
 let TIMER_TYPING = 3;
 
 let fieldTyping = $('#field-typing-id');
-let user = 'Spider-man';
+
 
 $(() => {
     refreshSentenceSize();
@@ -11,6 +11,10 @@ $(() => {
     $("#button-reset").click(restartGame);
     $("#button-reset").attr('disabled', true);
     updateScoreboard();
+    $('#user').selectize({
+        create: true,
+        sortField: 'text'
+    });
 })
 
 function updateTime(time) {
