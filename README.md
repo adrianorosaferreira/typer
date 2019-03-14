@@ -1,5 +1,7 @@
 # typer
 
+Este projeto consiste em um simples jogo para treino de digitação, onde o usuario, além do 'score', pode alterar as frases para treino. Para cada uma delas há um tempo de duração maximo e a quantidade de palavras de cada frase.
+
 Como tecnologias de desenvolvimento foram utilizadas as seguintes:
 
 1. JavaScript
